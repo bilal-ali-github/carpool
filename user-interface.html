@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpool System - User Interface</title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-sm-5" href="#">Intercity Carpooling</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <div class="d-sm-flex me-5">
+                    <a href="" class="btn btn-secondary me-2">Logout</a>
+                    </form>
+                </div>
+            </div>
+    </nav>
+
+    <header class="jumbotron p-5 bg-secondary text-white">
+        <h1> Intercity Carpooling Service</h1>
+    </header>
+
+    <main class="container">
+        <section class="mt-5">
+            <h2 class="">Sign Up,</h2>
+            <form action="" method="post">
+                <div class="mt-4 col-sm-8 m-auto">
+                    <div class="row">
+                        <div class="p-1 col-sm-4">
+                            <select class="form-select" id="departure_city">
+                                <option selected>Select Departure City</option>
+                                <option value="1">Islamabad</option>
+                                <option value="2">Rawalpind</option>
+                                <option value="3">Lahore</option>
+                              </select>
+                        </div>
+                        <div class="p-1 col-sm-4">
+                            <select class="form-select" id="arrival_city">
+                                <option selected>Select Arrival City</option>
+                                <option value="1">Islamabad</option>
+                                <option value="2">Rawalpind</option>
+                                <option value="3">Lahore</option>
+                              </select>
+                        </div>
+                        <div class="p-1 col-sm-4">
+                            <input type="date" class="form-control " name="from_date" id="date-from">
+                        </div>
+                    </div>
+                    <div class="text-center ">
+                        <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Search Event</button>
+                    </div>
+                  </div>
+            </form>
+        </section>
+
+        <hr>
+
+        <section class="mt-5">
+            
+        </section>
+    </main>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>
