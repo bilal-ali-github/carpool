@@ -8,15 +8,14 @@
     <title>Carpool System - User Interface</title>
 
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand ms-sm-5" href="#">Intercity Carpooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -35,7 +34,25 @@
 
     <main class="container">
         <section class="mt-5">
-            <h2 class="">Sign Up,</h2>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-6 col-md-4">
+                            <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary" alt="Profile Image">
+                        </div>
+                        <div class="col-6 col-md-8 align-self-center">
+                            <h3>Username <i class="bi bi-person-lines-fill"></i></h3>
+                            <p>username@email.com | 03355815387</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 align-self-center">
+                    <h6 class="">Responses</h6>
+                </div>
+            </div>
+        </section>
+        <section class="mt-5">
+            <h2 class="">Search,</h2>
             <form action="" method="post">
                 <div class="mt-4 col-sm-8 m-auto">
                     <div class="row">
@@ -62,14 +79,52 @@
                     <div class="text-center ">
                         <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Search Event</button>
                     </div>
-                  </div>
+                </div>
             </form>
         </section>
 
         <hr>
 
         <section class="mt-5">
-            
+            <h2>On Going Events</h2>
+            <div class="col-sm-8 m-auto mt-4 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <th>
+                            Departure City
+                        </th>
+                        <th>
+                            Arrival City
+                        </th>
+                        <th>
+                            Date
+                        </th>
+                        <th>
+                            Ride Fare
+                        </th>
+                        <th>
+                            &nbsp;
+                        </th>
+                    </thead>
+                    <tbody>
+                        <td>
+                            Islamabad
+                        </td>
+                        <td>
+                            Lahore
+                        </td>
+                        <td>
+                            2020-08-12
+                        </td>
+                        <td>
+                            500
+                        </td>
+                        <td>
+                            <button class="btn btn-sm btn-secondary">More Info</button>
+                        </td>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 

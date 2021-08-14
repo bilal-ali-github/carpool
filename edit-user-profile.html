@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carpool System</title>
+    <title>Carpool System - User Interface</title>
 
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 
 <body>
@@ -20,9 +21,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
-                <div class=" me-5">
-                    <a href="" class="btn btn-secondary me-2">Sign Up</a>
-                    <a href="" class="btn btn-secondary">Sign In</a>
+                <div class="d-sm-flex me-5">
+                    <a href="" class="btn btn-secondary me-2">Logout</a>
+                    </form>
                 </div>
             </div>
     </nav>
@@ -33,8 +34,15 @@
 
     <main class="container">
         <section class="mt-5">
-            <h2 class="">Sign Up,</h2>
+            <h2>Edit Profile</h2>
             <form action="" method="post">
+                <div class="mb-3 col-sm-6 m-auto">
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary" alt="Profile Image">
+                        </div>
+                    </div>
+                </div>
                 <div class="mb-3 col-sm-6 m-auto mt-5 ">
                     <div class="row">
                         <div class="col">
@@ -58,50 +66,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="mt-5 col-sm-6 m-auto">
-                    <div class="form-check">
-                        <input class="form-check-input secondary" type="radio" name="role_user" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Sign Up as <strong>User</strong>
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role_driver" id="flexRadioDefault2">
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Sign Up as <strong>Driver</strong>
-                        </label>
-                    </div>
-                </div>
                 <div class="col-sm-6 m-auto">
                     <div class="text-center ">
-                        <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Sign
-                            Up</button>
+                        <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Submit</button>
                     </div>
                 </div>
             </form>
         </section>
-        <section class="mt-5">
-            <h2 class="">Sign In,</h2>
-            <form action="" method="post">
-                <div class="mb-3 col-sm-6 m-auto">
-                    <label for="email" class="form-label ">Email</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" name="email">
-                </div>
-                <div class="mb-3 col-sm-6 m-auto">
-                    <div class="row">
-                        <div class="col">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 m-auto">
-                        <div class="text-center ">
-                            <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Sign
-                                Up</button>
-                        </div>
-                    </div>
-            </form>
-        </section>
+
     </main>
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
