@@ -38,8 +38,15 @@
             <form action="" method="post">
                 <div class="mb-3 col-sm-6 m-auto">
                     <div class="row">
-                        <div class="col-6">
-                            <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary" alt="Profile Image">
+                        <div class="col-7 ">
+                            <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary" alt="Profile Image" style="max-width: 200px;">
+                        </div>
+                        <div class="col-5 align-self-center">
+                            <button class="btn btn-secondary">Add / Change Picture</button>
+                            <form action="" method="">
+                                <input class="form-control mb-1" type="file" id="formFile" style="display: none;">
+                            <button type="submit mt-1" class="btn btn-sm btn-secondary" style="display: none;">Submit</button>
+                            </form> 
                         </div>
                     </div>
                 </div>
@@ -48,6 +55,10 @@
                         <div class="col">
                             <label for="username" class="form-label ">Name</label>
                             <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="username">
+                        </div>
+                        <div class="col">
+                            <label for="number" class="form-label">Contact No.</label>
+                            <input type="number" class="form-control" placeholder="Enter Contact Number" name="number">
                         </div>
                     </div>
                 </div>
