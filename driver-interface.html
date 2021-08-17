@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpool System - Driver Interface</title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-sm-5" href="#">Intercity Carpooling</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <div class="d-sm-flex me-5">
+                    <a href="" class="btn btn-secondary me-2">Logout</a>
+                    </form>
+                </div>
+            </div>
+    </nav>
+
+    <header class="jumbotron p-5 bg-secondary text-white">
+        <h1> Intercity Carpooling Service</h1>
+    </header>
+
+    <main class="container">
+        <section class="mt-5">
+            <div class="col-sm-8 m-auto">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary"
+                                    alt="Profile Image">
+                            </div>
+                            <div class="col-6 col-md-8 align-self-center">
+                                <h3>Username <i class="bi bi-person-lines-fill"></i></h3>
+                                <p>username@email.com | 03355815387</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="offset-sm-4 col-sm-2 align-self-center p-5">
+                        <h6 class="">Responses</h6>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="mt-5">
+            <div class="col-sm-8 m-auto">
+                <h2>Create Event</h2>
+                <div class="row">
+                    <div class="col">
+                        <form action="" method="post">
+                            <div class="mt-4">
+                                <div class="row">
+                                    <div class="p-1 col-sm">
+                                        <label class="form-label" for="departure_city">Departure City</label>
+                                        <select class="form-select" id="departure_city">
+                                            <option selected>Select Departure City</option>
+                                            <option value="1">Islamabad</option>
+                                            <option value="2">Rawalpind</option>
+                                            <option value="3">Lahore</option>
+                                        </select>
+                                    </div>
+                                    <div class="p-1 col-sm">
+                                        <label class="form-label" for="arrival_city">Arrival City</label>
+                                        <select class="form-select" id="arrival_city">
+                                            <option selected>Select Arrival City</option>
+                                            <option value="1">Islamabad</option>
+                                            <option value="2">Rawalpind</option>
+                                            <option value="3">Lahore</option>
+                                        </select>
+                                    </div>
+                                    <div class="p-1 col-sm">
+                                        <label class="form-label" for="date">Departure Date</label>
+                                        <input type="date" class="form-control" name="date" id="date">
+                                    </div>
+                                    <div class="p-1 col-sm">
+                                        <label class="form-label" for="time">Departure Time</label>
+                                        <input type="time" class="form-control" name="time" id="time">
+                                    </div>
+                                    <div class="p-1 col-sm">
+                                        <label class="form-label" for="fare">Pooling Fare</label>
+                                        <input type="number" class="form-control" name="fare" id="fare" placeholder="Enter Fare">
+                                    </div>
+                                </div>
+                                <div class="text-center ">
+                                    <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 "
+                                        onclick="">Create Event</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section class="mt-5">
+            <div class="col-sm-8 m-auto">
+                <h2>
+                    Carpooling Events
+                </h2>
+                <div class="table-responsive mt-5">
+                    <table class="table table-hover">
+                        <thead>
+                            <th>
+                                #
+                            </th>
+                            <th>
+                                Departure City
+                            </th>
+                            <th>
+                                Arrival City
+                            </th>
+                            <th>
+                                Departure Date
+                            </th>
+                            <th>
+                                Departure Time
+                            </th>
+                            <th>
+                                Pooling Fare
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </thead>
+                        <tbody>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                Rawalpind
+                            </td>
+                            <td>
+                                Lahore
+                            </td>
+                            <td>
+                                2020-08-12
+                            </td>
+                            <td>
+                                12:00:00
+                            </td>
+                            <td>
+                                1000 Rs
+                            </td>
+                            <td>
+                                <div class="d-flex">
+                                    <button type="button" class="btn btn-warning btn-sm m-auto">Update</button>
+                                    <button type="button" class="btn btn-danger btn-sm m-auto">Delete</button>
+                                </div>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

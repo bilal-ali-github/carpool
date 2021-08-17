@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
+for($i = 0; i<=10; $i++){
+    if($i == 5){
+        exit;
+    }
+}
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,17 +70,17 @@
                 </div>
                 <div class="mt-5 col-sm-6 m-auto">
                     <div class="form-check">
-                        <input class="form-check-input secondary" type="radio" name="role_user" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1">
                         <label class="form-check-label" for="flexRadioDefault1">
-                            Sign Up as <strong>User</strong>
+                          Sign up as <b> User</b>
                         </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role_driver" id="flexRadioDefault2">
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" checked>
                         <label class="form-check-label" for="flexRadioDefault2">
-                            Sign Up as <strong>Driver</strong>
+                            Sign up as <b> Driver</b>
                         </label>
-                    </div>
+                      </div>
                 </div>
                 <div class="col-sm-6 m-auto">
                     <div class="text-center ">
