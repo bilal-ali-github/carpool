@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 
-for($i = 0; i<=10; $i++){
-    if($i == 5){
-        exit;
-    }
-}
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carpool System</title>
-
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand ms-sm-5" href="#">Intercity Carpooling</a>
+            <a class="navbar-brand ms-sm-5" href="#">
+                <h2 class="text-success">Intercity Carpooling</h2>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,94 +25,201 @@ for($i = 0; i<=10; $i++){
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
                 <div class=" me-5">
-                    <a href="" class="btn btn-secondary me-2">Sign Up</a>
-                    <a href="" class="btn btn-secondary">Sign In</a>
+                    <a href="" class="text-success text-decoration-none me-2">Sign Up</a>
+                    <a href="" class="text-success text-decoration-none">Sign In</a>
                 </div>
             </div>
     </nav>
 
-    <header class="jumbotron p-5 bg-secondary text-white">
-        <h1> Intercity Carpooling Service</h1>
-    </header>
+    <div class="bg-image" style="background-image: url('main.jpg'); height: 80vh;">
+    </div>
 
-    <main class="container">
-        <section class="mt-5">
-            <h2 class="">Sign Up,</h2>
-            <form action="" method="post">
-                <div class="mb-3 col-sm-6 m-auto mt-5 ">
-                    <div class="row">
-                        <div class="col">
-                            <label for="username" class="form-label ">Name</label>
-                            <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="username">
-                        </div>
-                        <div class="col">
-                            <label for="number" class="form-label">Contact No.</label>
-                            <input type="number" class="form-control" placeholder="Enter Contact Number" name="number">
-                        </div>
-                    </div>
-                </div>
 
-                <div class="mb-3 col-sm-6 m-auto">
-                    <label for="email" class="form-label ">Email</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" name="email">
+
+    <div class="">
+        <div class="container">
+            <div class="row" style="min-height: 10rem;">
+                <div class="col-sm p-5" style="background-color: #19ad34f5;">
+                    <h3 class="text-white"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
+                    <ul class="text-white  mt-5">
+                        <li>See all Listing Events</li>
+                        <li>All Listing with Full Information</li>
+                    </ul>
                 </div>
-                <div class="mb-3 col-sm-6 m-auto">
-                    <div class="row">
-                        <div class="col">
-                            <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
-                        </div>
-                        <div class="col">
-                            <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confrm_password">
+                <div class="col-sm p-5" style="background-color: #19ad34dc;">
+                    <h3 class="text-white"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
+                    <ul class="text-white  mt-5">
+                        <li>See all Listing Events</li>
+                        <li>All Listing with Full Information</li>
+                    </ul>
+                </div>
+                <div class="col-sm p-5" style="background-color: #19ad34cc;">
+                    <h3 class="text-white"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
+                    <ul class="text-white  mt-5">
+                        <li>See all Listing Events</li>
+                        <li>All Listing with Full Information</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <main class="container">
+            <section class="mt-5">
+                <h2 class="">Sign Up,</h2>
+                <form action="" method="post">
+                    <div class="mb-3 col-sm-6 m-auto mt-5 ">
+                        <div class="row">
+                            <div class="col">
+                                <label for="username" class="form-label ">Name</label>
+                                <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="username">
+                            </div>
+                            <div class="col">
+                                <label for="number" class="form-label">Contact No.</label>
+                                <input type="tel" class="form-control" placeholder="Enter Contact Number" name="number">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="mt-5 col-sm-6 m-auto">
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                          Sign up as <b> User</b>
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" checked>
-                        <label class="form-check-label" for="flexRadioDefault2">
-                            Sign up as <b> Driver</b>
-                        </label>
-                      </div>
-                </div>
-                <div class="col-sm-6 m-auto">
-                    <div class="text-center ">
-                        <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Sign
-                            Up</button>
+                    <div class="mb-3 col-sm-6 m-auto">
+                        <label for="email" class="form-label ">Email</label>
+                        <input type="email" class="form-control" placeholder="Enter Email" name="email">
                     </div>
-                </div>
-            </form>
-        </section>
-        <section class="mt-5">
-            <h2 class="">Sign In,</h2>
-            <form action="" method="post">
-                <div class="mb-3 col-sm-6 m-auto">
-                    <label for="email" class="form-label ">Email</label>
-                    <input type="email" class="form-control" placeholder="Enter Email" name="email">
-                </div>
-                <div class="mb-3 col-sm-6 m-auto">
-                    <div class="row">
-                        <div class="col">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
+                    <div class="mb-3 col-sm-6 m-auto">
+                        <div class="row">
+                            <div class="col">
+                                <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
+                            </div>
+                            <div class="col">
+                                <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confrm_password">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-5 col-sm-6 m-auto">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                              Sign up as <b> User</b>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" checked>
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                Sign up as <b> Driver</b>
+                            </label>
                         </div>
                     </div>
                     <div class="col-sm-6 m-auto">
                         <div class="text-center ">
-                            <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Sign
+                            <button id="submit" type="button " class="btn btn-success btn-md mt-5 ">Sign
                                 Up</button>
                         </div>
                     </div>
-            </form>
-        </section>
-    </main>
+                </form>
+            </section>
+            <section class="mt-5">
+                <h2 class="">Sign In,</h2>
+                <form action="" method="post">
+                    <div class="mb-3 col-sm-6 m-auto">
+                        <label for="email" class="form-label ">Email</label>
+                        <input type="email" class="form-control" placeholder="Enter Email" name="email">
+                    </div>
+                    <div class="mb-3 col-sm-6 m-auto">
+                        <div class="row">
+                            <div class="col">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 m-auto">
+                            <div class="text-center ">
+                                <button id="submit" type="button " class="btn btn-success btn-md mt-5 ">Sign In
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section class="mt-5">
+                <h2 class="text-success">Search,</h2>
+                <form action="" method="post">
+                    <div class="mt-4 col-sm-8 m-auto">
+                        <div class="row">
+                            <div class="p-1 col-sm-4">
+                                <select class="form-select" id="departure_city">
+                                    <option selected>Select Departure City</option>
+                                    <option value="1">Islamabad</option>
+                                    <option value="2">Rawalpind</option>
+                                    <option value="3">Lahore</option>
+                                  </select>
+                            </div>
+                            <div class="p-1 col-sm-4">
+                                <select class="form-select" id="arrival_city">
+                                    <option selected>Select Arrival City</option>
+                                    <option value="1">Islamabad</option>
+                                    <option value="2">Rawalpind</option>
+                                    <option value="3">Lahore</option>
+                                  </select>
+                            </div>
+                            <div class="p-1 col-sm-4">
+                                <input type="date" class="form-control" name="date" id="date">
+                            </div>
+                        </div>
+                        <div class="text-center ">
+                            <button id="submit" type="button " class="btn btn-outline-success btn-md mt-5 " onclick="">Search Event</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <hr>
+
+            <section class="mt-5">
+                <h2 class="text-success">On Going Events</h2>
+                <div class="col-sm-8 m-auto mt-4 table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <th>
+                                Departure City
+                            </th>
+                            <th>
+                                Arrival City
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Ride Fare
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
+                        </thead>
+                        <tbody>
+                            <td>
+                                Islamabad
+                            </td>
+                            <td>
+                                Lahore
+                            </td>
+                            <td>
+                                2020-08-12
+                            </td>
+                            <td>
+                                500
+                            </td>
+                            <td>
+                                <button class="btn btn-sm btn-success">More Info</button>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./node_modules/mdb-ui-kit/js/mdb.min.js"></script>
 </body>
 
 </html>

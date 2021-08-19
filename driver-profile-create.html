@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpool System - Driver Profile Creation</title>
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand ms-sm-5" href="#">Intercity Carpooling</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
+                <div class="d-sm-flex me-5">
+                    <a href="" class="btn btn-secondary me-2">Logout</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="jumbotron p-5 bg-secondary text-white">
+        <h1> Intercity Carpooling Service</h1>
+    </header>
+
+    <main class="container">
+        <section class="mt-5">
+            <h2>Edit Profile</h2>
+            <form action="" method="post">
+                <div class="mb-3 col-sm-6 m-auto">
+                    <label for="profile-image" class="form-label">Upload Profile Picture</label>
+                    <input class="form-control mb-1" type="file" name="profile-image" id="profile-image">
+                </div>
+                <div class="mb-3 col-sm-6 m-auto">
+                    <div class="row ">
+                        <div class="col ">
+                            <label for="car-name" class="form-label">Car Name</label>
+                            <input type="text" class="form-control " placeholder="Enter Car Name" name="car-name">
+                        </div>
+                        <div class="col ">
+                            <label for="car-number" class="form-label">Car Registration Number</label>
+                            <input type="text" class="form-control" placeholder="Enter Car Registration Number" name="car-number">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3 col-sm-6 m-auto ">
+                    <label for="car-image " class="form-label ">Car Image</label>
+                    <input type="file" class="form-control" name="car-image">
+                </div>
+                <div class="mb-3 col-sm-6 m-auto ">
+                    <div class="row ">
+                        <div class="col ">
+                            <label for="car-color" class="form-label">Car Color</label>
+                            <input type="text" class="form-control " placeholder="Enter Car Color" name="car-color">
+                        </div>
+                        <div class="col ">
+                            <label for="car-seats" class="form-label">Car Seats</label>
+                            <input type="number" class="form-control " placeholder="Enter Passenger Seats Available" name="car-seats">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 m-auto ">
+                    <div class="text-center ">
+                        <button id="submit " type="button " class="btn btn-secondary btn-md mt-5 " onclick=" ">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+    </main>
+
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js "></script>
+</body>
+
+</html>

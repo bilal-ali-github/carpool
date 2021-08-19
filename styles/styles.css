@@ -1,0 +1,23 @@
+.bg-light {
+    background-color: #ffffff;
+}
+
+.navbar-light {
+    color: #19AD33;
+}
+
+.bg-image {
+    position: relative;
+    overflow: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    margin-top: 0rem;
+}
+
+.main-background {
+    background-color: #19ad34cc;
+}
+
+
+/* #198754 */
