@@ -19,8 +19,12 @@
     background-color: #19ad34cc;
 }
 
-.display{
+.display {
     display: none;
+}
+
+.border-raduis {
+    border-radius: 2rem;
 }
 
 
