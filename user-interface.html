@@ -33,55 +33,57 @@
     </header>
 
     <main class="container">
-        <section class="mt-5">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-6 col-md-4">
-                            <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary" alt="Profile Image">
-                        </div>
-                        <div class="col-6 col-md-8 align-self-center">
-                            <h3>Username <i class="bi bi-person-lines-fill"></i></h3>
-                            <p>username@email.com | 03355815387</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 align-self-center">
-                    <h6 class="">Responses</h6>
-                </div>
-            </div>
-        </section>
-        <section class="mt-5">
-            <h2 class="">Search,</h2>
-            <form action="" method="post">
-                <div class="mt-4 col-sm-8 m-auto">
-                    <div class="row">
-                        <div class="p-1 col-sm-4">
-                            <select class="form-select" id="departure_city">
-                                <option selected>Select Departure City</option>
-                                <option value="1">Islamabad</option>
-                                <option value="2">Rawalpind</option>
-                                <option value="3">Lahore</option>
-                              </select>
-                        </div>
-                        <div class="p-1 col-sm-4">
-                            <select class="form-select" id="arrival_city">
-                                <option selected>Select Arrival City</option>
-                                <option value="1">Islamabad</option>
-                                <option value="2">Rawalpind</option>
-                                <option value="3">Lahore</option>
-                              </select>
-                        </div>
-                        <div class="p-1 col-sm-4">
-                            <input type="date" class="form-control" name="date" id="date">
+        <div class="col-lg-8 m-auto">
+            <section class="mt-5">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-6 col-md-4">
+                                <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-secondary" alt="Profile Image">
+                            </div>
+                            <div class="col-6 col-md-8 align-self-center">
+                                <h3>Username <i class="bi bi-person-lines-fill"></i></h3>
+                                <p>username@email.com | 03355815387</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="text-center ">
-                        <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Search Event</button>
+                    <div class="col-sm-6 align-self-center">
+                        <h6 class="ms-5 py-5">Responses</h6>
                     </div>
                 </div>
-            </form>
-        </section>
+            </section>
+            <section class="mt-5">
+                <h2 class="">Search,</h2>
+                <form action="" method="post">
+                    <div class="mt-4 col-sm m-auto">
+                        <div class="row">
+                            <div class="p-1 col-sm-4">
+                                <select class="form-select" id="departure_city">
+                                    <option selected>Select Departure City</option>
+                                    <option value="1">Islamabad</option>
+                                    <option value="2">Rawalpind</option>
+                                    <option value="3">Lahore</option>
+                                  </select>
+                            </div>
+                            <div class="p-1 col-sm-4">
+                                <select class="form-select" id="arrival_city">
+                                    <option selected>Select Arrival City</option>
+                                    <option value="1">Islamabad</option>
+                                    <option value="2">Rawalpind</option>
+                                    <option value="3">Lahore</option>
+                                  </select>
+                            </div>
+                            <div class="p-1 col-sm-4">
+                                <input type="date" class="form-control" name="date" id="date">
+                            </div>
+                        </div>
+                        <div class="text-center ">
+                            <button id="submit" type="button " class="btn btn-secondary btn-md mt-5 " onclick="">Search Event</button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
 
         <hr>
 
