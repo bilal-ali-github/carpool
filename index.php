@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +15,13 @@
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <?php
+    if(isset($_SESSION['status'])){
+        echo "<h4>".$_SESSION['status']."</h4>";
+        unset($_SESSION['status']);
+    }
+    ?>
+    <nav class="navbar  navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand ms-sm-5" href="#">
                 <h2 class="text-success">Intercity Carpooling</h2>
@@ -29,6 +37,7 @@
                     <a href="" class="text-success text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Sign In</a>
                 </div>
             </div>
+        </div>
     </nav>
 
     <header class="bg-image" style="background-image: url('main.jpg'); height: 80vh;">
@@ -60,7 +69,6 @@
         </div>
     </div>
 
-
     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -71,7 +79,7 @@
                 <div class="modal-body">
                     <section class="mt-5">
                         <h2 class="ms-3 mb-4 text-success">Sign In,</h2>
-                        <form action="" method="post">
+                        <form action="login.php" method="post" enctype="text/plain">
                             <div class="mb-3 col-sm-6 m-auto">
                                 <label for="email" class="form-label ">Email</label>
                                 <input type="email" class="form-control" placeholder="Enter Email" name="email">
@@ -85,7 +93,7 @@
                                 </div>
                                 <div class="col-sm-6 m-auto">
                                     <div class="text-center ">
-                                        <button id="submit-in" type="button " class="btn btn-success btn-md mt-5 ">Sign
+                                        <button name="submit-in" type="button " class="btn btn-success btn-md mt-5 ">Sign
                                             In
                                         </button>
                                     </div>
@@ -100,7 +108,6 @@
                     </section>
                 </div>
                 <div class="modal-footer">
-
                 </div>
             </div>
         </div>
@@ -115,16 +122,16 @@
                 <div class="modal-body">
                     <section class="mt-5">
                         <h2 class="text-success">Sign Up,</h2>
-                        <form action="" method="post">
+                        <form action="./functions/sign-up.php" method="post">
                             <div class="mb-3 col-sm-10 m-auto mt-5">
                                 <div class="row">
                                     <div class="col">
-                                        <label for="username" class="form-label ">Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="username">
+                                        <label for="name" class="form-label ">Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="name">
                                     </div>
                                     <div class="col">
-                                        <label for="number" class="form-label">Contact No.</label>
-                                        <input type="tel" class="form-control" placeholder="Enter Contact Number" name="number">
+                                        <label for="phone_no" class="form-label">Contact No.</label>
+                                        <input type="text" class="form-control" placeholder="Enter Contact Number" name="phone_no">
                                     </div>
                                 </div>
                             </div>
@@ -138,19 +145,19 @@
                                         <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
                                     </div>
                                     <div class="col">
-                                        <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confrm_password">
+                                        <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confirm_password">
                                     </div>
                                 </div>
                             </div>
                             <div class="mt-5 col-sm-10 m-auto">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1">
+                                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="User" checked>
                                     <label class="form-check-label" for="flexRadioDefault1">
                                         Sign up as <b> User</b>
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" checked>
+                                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="Driver" >
                                     <label class="form-check-label" for="flexRadioDefault2">
                                         Sign up as <b> Driver</b>
                                     </label>
@@ -158,7 +165,7 @@
                             </div>
                             <div class="col-sm-6 m-auto">
                                 <div class="text-center ">
-                                    <button id="submit-up" type="button " class="btn btn-success btn-md mt-5 ">Sign
+                                    <button type="submit" class="btn btn-success btn-md mt-5" name="sign-up">Sign
                                         Up</button>
                                 </div>
                             </div>
@@ -166,12 +173,10 @@
                     </section>
                 </div>
                 <div class="modal-footer">
-
                 </div>
             </div>
         </div>
     </div>
-
 
     <main class="container">
         <section class="mt-5">
@@ -205,9 +210,7 @@
                 </div>
             </form>
         </section>
-
         <hr>
-
         <section class="mt-5">
             <div class="col-sm-8 m-auto mt-4 table-responsive">
                 <h2 class="text-success mb-5">On Going Events</h2>
@@ -249,7 +252,6 @@
                 </table>
             </div>
         </section>
-
     </main>
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
