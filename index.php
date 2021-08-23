@@ -21,7 +21,7 @@
         unset($_SESSION['status']);
     }
     ?>
-    <nav class="navbar  navbar-expand-lg navbar-light bg-white">
+    <nav class="navbar  navbar-expand-lg navbar-light bg-white mt-5">
         <div class="container-fluid">
             <a class="navbar-brand ms-sm-5" href="#">
                 <h2 class="text-success">Intercity Carpooling</h2>
@@ -79,7 +79,7 @@
                 <div class="modal-body">
                     <section class="mt-5">
                         <h2 class="ms-3 mb-4 text-success">Sign In,</h2>
-                        <form action="login.php" method="post" enctype="text/plain">
+                        <form action="./functions/sign-in.php" method="post">
                             <div class="mb-3 col-sm-6 m-auto">
                                 <label for="email" class="form-label ">Email</label>
                                 <input type="email" class="form-control" placeholder="Enter Email" name="email">
@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-sm-6 m-auto">
                                     <div class="text-center ">
-                                        <button name="submit-in" type="button " class="btn btn-success btn-md mt-5 ">Sign
+                                        <button name="sign-in" type="submit" class="btn btn-success btn-md mt-5 ">Sign
                                             In
                                         </button>
                                     </div>

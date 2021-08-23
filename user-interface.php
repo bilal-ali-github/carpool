@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true || $_SESSION['user_role'] != 'User') {
+    header("location: index.php");
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +32,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
                 <div class=" me-5">
-                    <a href="" class="text-success text-decoration-none me-2">Logout</a>
+                    <a href="./functions/logout.php" class="text-success text-decoration-none me-2">Logout</a>
                 </div>
             </div>
     </nav>
@@ -42,6 +50,9 @@
                             <div class="row">
                                 <div class="col-6 col-md-4">
                                     <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
+                                    <!-- ModalBtn -->
+                                    <span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i class="bi bi-pencil-fill"></i></span>
+                                    <!-- ModalBtn:End -->
                                 </div>
                                 <div class="col-6 col-md-8 align-self-center">
                                     <h3>Username</h3>
@@ -65,7 +76,7 @@
                                         <option value="1">Islamabad</option>
                                         <option value="2">Rawalpind</option>
                                         <option value="3">Lahore</option>
-                                      </select>
+                                    </select>
                                 </div>
                                 <div class="p-1 col-sm-4">
                                     <select class="form-select" id="arrival_city">
@@ -73,7 +84,7 @@
                                         <option value="1">Islamabad</option>
                                         <option value="2">Rawalpind</option>
                                         <option value="3">Lahore</option>
-                                      </select>
+                                    </select>
                                 </div>
                                 <div class="p-1 col-sm-4">
                                     <input type="date" class="form-control" name="date" id="date">
@@ -85,6 +96,37 @@
                         </div>
                     </form>
                 </section>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalToggleLabel">Please Sign In to Continue</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <section class="mt-5">
+                                    <h5 class="text-center mb-4 text-success">Add / Change Profile Image,</h2>
+                                        <form action="" method="post">
+                                            <div class="mb-3 col-sm-6 m-auto">
+                                                <label for="upload" class="form-label ">Upload Picture</label>
+                                                <input type="file" class="form-control" name="profile_img">
+                                            </div>
+                                            <div class="col-sm-6 m-auto">
+                                                <div class="text-center">
+                                                    <button name="submit" type="submit" class="btn btn-success btn-md mt-5 ">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal:End -->
 
                 <hr>
 

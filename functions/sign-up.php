@@ -20,7 +20,7 @@ if(isset($_POST['sign-up'])){
     if(empty($phone_no) || strlen($phone_no) != 11){
         $phone_no_err = "Please Enter a Valid Contact Number";
     }
-    $email = trim($_POST['email'] || filter_var($email,FILTER_VALIDATE_EMAIL));
+    $email = trim($_POST['email']);
     if(empty($email)){
         $email_err = "Please Enter a Valid Email";
     }
