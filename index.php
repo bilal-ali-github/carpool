@@ -16,8 +16,8 @@
 
 <body>
     <?php
-    if(isset($_SESSION['status'])){
-        echo "<h4>".$_SESSION['status']."</h4>";
+    if (isset($_SESSION['status'])) {
+        echo "<h4>" . $_SESSION['status'] . "</h4>";
         unset($_SESSION['status']);
     }
     ?>
@@ -32,10 +32,118 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
+                <!-- ModalBtn -->
                 <div class=" me-5">
                     <a href="" class="text-success text-decoration-none me-2" data-bs-toggle="modal" data-bs-target="#exampleModalToggle2">Sign Up</a>
                     <a href="" class="text-success text-decoration-none" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Sign In</a>
                 </div>
+                <!-- ModalBtn:End -->
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-black" id="exampleModalToggleLabel">Please Sign In to Continue</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <section class="mt-5">
+                                    <h2 class="ms-3 mb-4 text-success">Sign In,</h2>
+                                    <form action="./functions/sign-in.php" method="post" class="text-black">
+                                        <div class="mb-3 col-sm-6 m-auto">
+                                            <label for="email" class="form-label ">Email</label>
+                                            <input type="email" class="form-control" placeholder="Enter Email" name="email">
+                                        </div>
+                                        <div class="mb-3 col-sm-6 m-auto">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="password" class="form-label">Password</label>
+                                                    <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 m-auto">
+                                                <div class="text-center ">
+                                                    <button name="sign-in" type="submit" class="btn btn-success btn-md mt-5 ">Sign
+                                                        In
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="mt-5">
+                                        <a href="" class="text-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
+                                            <p>Don't have an account ? <br> Sign Up Here Easily !</p>
+                                        </a>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-black" id="exampleModalToggleLabel2">Please Sign Up to Continue</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <section class="mt-5">
+                                    <h2 class="text-success">Sign Up,</h2>
+                                    <form action="./functions/sign-up.php" method="post" class="text-black">
+                                        <div class="mb-3 col-sm-10 m-auto mt-5">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="name" class="form-label ">Name</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="name">
+                                                </div>
+                                                <div class="col">
+                                                    <label for="phone_no" class="form-label">Contact No.</label>
+                                                    <input type="text" class="form-control" placeholder="Enter Contact Number" name="phone_no">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 col-sm-10 m-auto">
+                                            <label for="email" class="form-label ">Email</label>
+                                            <input type="email" class="form-control" placeholder="Enter Email" name="email">
+                                        </div>
+                                        <div class="mb-3 col-sm-10 m-auto">
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
+                                                </div>
+                                                <div class="col">
+                                                    <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confirm_password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-5 col-sm-10 m-auto">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="User" checked>
+                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                    Sign up as <b> User</b>
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="Driver">
+                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                    Sign up as <b> Driver</b>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 m-auto">
+                                            <div class="text-center ">
+                                                <button type="submit" class="btn btn-success btn-md mt-5" name="sign-up">Sign
+                                                    Up</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal:End -->
             </div>
         </div>
     </nav>
@@ -68,116 +176,6 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel">Please Sign In to Continue</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <section class="mt-5">
-                        <h2 class="ms-3 mb-4 text-success">Sign In,</h2>
-                        <form action="./functions/sign-in.php" method="post">
-                            <div class="mb-3 col-sm-6 m-auto">
-                                <label for="email" class="form-label ">Email</label>
-                                <input type="email" class="form-control" placeholder="Enter Email" name="email">
-                            </div>
-                            <div class="mb-3 col-sm-6 m-auto">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="password" class="form-label">Password</label>
-                                        <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6 m-auto">
-                                    <div class="text-center ">
-                                        <button name="sign-in" type="submit" class="btn btn-success btn-md mt-5 ">Sign
-                                            In
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <div class="mt-5">
-                            <a href="" class="text-success" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">
-                                <p>Don't have an account ? <br> Sign Up Here Easily !</p>
-                            </a>
-                        </div>
-                    </section>
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalToggleLabel2">Please Sign Up to Continue</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <section class="mt-5">
-                        <h2 class="text-success">Sign Up,</h2>
-                        <form action="./functions/sign-up.php" method="post">
-                            <div class="mb-3 col-sm-10 m-auto mt-5">
-                                <div class="row">
-                                    <div class="col">
-                                        <label for="name" class="form-label ">Name</label>
-                                        <input type="text" class="form-control" placeholder="Enter Name" aria-label="Name" name="name">
-                                    </div>
-                                    <div class="col">
-                                        <label for="phone_no" class="form-label">Contact No.</label>
-                                        <input type="text" class="form-control" placeholder="Enter Contact Number" name="phone_no">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mb-3 col-sm-10 m-auto">
-                                <label for="email" class="form-label ">Email</label>
-                                <input type="email" class="form-control" placeholder="Enter Email" name="email">
-                            </div>
-                            <div class="mb-3 col-sm-10 m-auto">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="password" class="form-control" placeholder="Enter Password" aria-label="Password" name="password">
-                                    </div>
-                                    <div class="col">
-                                        <input type="password" class="form-control" placeholder="Confirm Password" aria-label="Password" name="confirm_password">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-5 col-sm-10 m-auto">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="User" checked>
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Sign up as <b> User</b>
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault2" value="Driver" >
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Sign up as <b> Driver</b>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-sm-6 m-auto">
-                                <div class="text-center ">
-                                    <button type="submit" class="btn btn-success btn-md mt-5" name="sign-up">Sign
-                                        Up</button>
-                                </div>
-                            </div>
-                        </form>
-                    </section>
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-        </div>
-    </div>
-
     <main class="container">
         <section class="mt-5">
             <form action="" method="post">
@@ -246,7 +244,9 @@
                             500
                         </td>
                         <td>
+                            <!-- ModalBtn -->
                             <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">More Info</button>
+                            <!-- ModalBtn:End -->
                         </td>
                     </tbody>
                 </table>
