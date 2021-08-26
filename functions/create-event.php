@@ -17,6 +17,7 @@ if (isset($_POST['create_event'])) {
     $date = $date_err = "";
     $time = $time_err = "";
     $fare = $fare_err = "";
+    $status = "Pending";
     if (empty($_POST['departure_city'])){
         $departure_city_err = "Please Select Departure City";
         
@@ -40,7 +41,7 @@ if (isset($_POST['create_event'])) {
     if (empty($_POST['time'])) {
         $time_err = "Please Select Time";
     } else {
-        $time = date('H:m:s', strtotime($_POST['time']));
+        $time = date('H:i:s', strtotime($_POST['time']));
         var_dump($time);
     }
     if (empty($_POST['fare'])) {
@@ -51,7 +52,7 @@ if (isset($_POST['create_event'])) {
     }
     if (empty($departure_city_err) && empty($arrival_city_err) && empty($date_err) && empty($time_err) && empty($fare_err)) {
         echo "Here";
-        $sql = "INSERT INTO `events` (driver_id,departure_city,arrival_city,date,time,fare) VALUES ($driver_id,'$departure_city','$arrival_city','$date','$time',$fare)";
+        $sql = "INSERT INTO `events` (driver_id,departure_city,arrival_city,date,time,fare,status) VALUES ($driver_id,'$departure_city','$arrival_city','$date','$time',$fare,'$status')";
         $stmt = mysqli_query($con, $sql);
         var_dump($stmt);
         if ($stmt) {

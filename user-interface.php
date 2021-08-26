@@ -16,7 +16,6 @@ if($stmt){
         if(mysqli_stmt_num_rows($stmt) == 1){
             mysqli_stmt_bind_result($stmt,$profile_img);
             if(mysqli_stmt_fetch($stmt)){
-                var_dump($profile_img);
                 $img_path = $profile_img;
             }
         }
@@ -43,7 +42,7 @@ mysqli_close($con);
                             <div class="col-6 col-md-4">
                                 <img src="<?php if(empty($img_path)){echo "./images/default.jpg";}else{echo $img_path;} ?>" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
                                 <!-- ModalBtn -->
-                                <span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i class="bi bi-pencil-fill"></i></span>
+                                <?php if(empty($img_path)){ echo '<span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#exampleModalToggle"><i class="bi bi-pencil-fill"></i></span>';} ?>
                                 <!-- ModalBtn:End -->
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
@@ -59,11 +58,11 @@ mysqli_close($con);
                                                         <form action="./functions/user-submit.php" method="post" enctype="multipart/form-data">
                                                             <div class="mb-3 col-sm-6 m-auto">
                                                                 <label for="upload" class="form-label ">Upload Picture</label>
-                                                                <input type="file" class="form-control" name="profile_img" <?php if(!empty($img_path)){ echo "disabled";}?>>
+                                                                <input type="file" class="form-control" name="profile_img">
                                                             </div>
                                                             <div class="col-sm-6 m-auto">
                                                                 <div class="text-center">
-                                                                    <button name="submit-profile" type="submit" class="btn btn-success btn-md mt-5"<?php if(!empty($img_path)){ echo "disabled";}?>>Submit</button>
+                                                                    <button name="submit-profile" type="submit" class="btn btn-success btn-md mt-5">Submit</button>
                                                                 </div>
                                                             </div>
                                                         </form>

@@ -15,6 +15,7 @@ $reg_num = $reg_num_err = "";
 $car_img = $car_img_err = "";
 $car_color = $car_color_err = "";
 $car_seats = $car_seats_err = 0;
+$status = "Pending";
 
 if (isset($_POST['profile_submit'])) {
     if (empty($_FILES['profile_img'])) {
@@ -32,7 +33,7 @@ if (isset($_POST['profile_submit'])) {
     } else {
         $reg_num = trim($_POST['reg_num']);
     }
-    if (empty(trim($_FILES['car_img']))) {
+    if (empty(($_FILES['car_img']))) {
         $car_img_err = "Please Input Car Image";
     } else {
         $car_img = $_FILES['car_img'];
@@ -61,10 +62,10 @@ if (isset($_POST['profile_submit'])) {
         }
         $filename_car = $driver_id . $_FILES['car_img']['name'];
         $tempname = $_FILES['car_img']['tmp_name'];
-        $folder_car = "./images/drivers/" . $filename_car;
-        move_uploaded_file($tempname, "../images/drivers/" . $filename_car);
+        $folder_car = "./images/drivers/car_images/" . $filename_car;
+        move_uploaded_file($tempname, "../images/drivers/car_images/" . $filename_car);
 
-        $sql = "INSERT INTO `driver_profile`(driver_id,profile_img,car_name,reg_num,car_img,car_color,car_seats) VALUES($driver_id,'$folder_profile','$car_name','$reg_num','$folder_car','$car_color',$car_seats)";
+        $sql = "INSERT INTO `driver_profile`(driver_id,profile_img,car_name,reg_num,car_img,car_color,car_seats,status) VALUES($driver_id,'$folder_profile','$car_name','$reg_num','$folder_car','$car_color',$car_seats,'$status')";
         $stmt = mysqli_query($con, $sql);
         if ($stmt) {
             header("location: ../driver-interface.php");

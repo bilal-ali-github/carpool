@@ -2,9 +2,39 @@
 session_start();
 if (!isset($_SESSION['driver_logged_in']) || $_SESSION['driver_logged_in'] !== true || $_SESSION['driver_role'] != 'Driver') {
     header("location: index.php");
+    
 }
+require "./database/db_controller.php";
+
+$driver_id = $_SESSION['driver_id'];
+$count = 0;
+$sql_events = "SELECT * FROM `events` WHERE driver_id = $driver_id";
+$stmt_events = mysqli_query($con,$sql_events);
+
+$img_path = "";
+$curr_status = "";
+$sql_profile = "SELECT profile_img,status FROM `driver_profile` WHERE driver_id = ?";
+$stmt_profile = mysqli_prepare($con,$sql_profile);
+if($stmt_profile){
+    mysqli_stmt_bind_param($stmt_profile,"i",$param_driver_id);
+    $param_driver_id = $driver_id;
+    if(mysqli_stmt_execute($stmt_profile)){
+        mysqli_stmt_store_result($stmt_profile);
+        if(mysqli_stmt_num_rows($stmt_profile) == 1){
+            mysqli_stmt_bind_result($stmt_profile,$profile_img,$status);
+            if(mysqli_stmt_fetch($stmt_profile)){
+                $img_path = $profile_img;
+                $curr_status = $status;
+                echo var_dump($img_path);
+                echo var_dump($curr_status);
+            }
+        }
+    }
+}
+mysqli_close($con);
 
 require_once "./partials/header.php";
+
 
 ?>
 
@@ -20,9 +50,9 @@ require_once "./partials/header.php";
                     <div class="col-sm-6">
                         <div class="row">
                             <div class="col-6 col-md-4">
-                                <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
+                                <img src="<?php if(empty($img_path)){echo "./images/default.jpg";}else{echo $img_path;} ?>" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
                                 <!-- ModalBtn -->
-                                <span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#create-modal"><i class="bi bi-pencil-fill"></i></span>
+                                <?php if(empty($img_path)){ echo '<span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#create-modal"><i class="bi bi-pencil-fill"></i></span>';} ?>
                                 <!-- ModalBtn:End -->
                                 <!-- Modal -->
                                 <div class="modal fade" id="create-modal" aria-hidden="true" aria-labelledby="ModalToggle" tabindex="-1">
@@ -76,12 +106,12 @@ require_once "./partials/header.php";
                             <div class="col-6 col-md-8 align-self-center">
                                 <h3>Username</h3>
                                 <p>username@email.com | 03355815387</p>
-                                <p class=""><span class="badge bg-white rounded-pill" role="button"><a class="bi bi-exclamation-circle text-warning text-decoration-none"> Submit Profile</a></span></p>
+                                <p class=""><span class="badge bg-white rounded-pill" role="button"><a class="<?php if(empty($curr_status)){echo 'bi bi-exclamation-circle text-danger ' ;}elseif($curr_status == 'Pending'){echo 'bi bi-arrow-repeat text-warning';}elseif($curr_status == 'Accepted'){echo 'bi bi-check2-circle text-success';} ?> text-decoration-none"> <?php if(empty($curr_status)){ echo 'Complete Profile';}elseif($curr_status == 'Pending'){echo 'In Review';}elseif($curr_status == 'Accepted'){echo 'Verified';}?> </a></span></p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 align-self-center p-5">
-                        <p class="ms-5"><span class="badge bg-success p-2"><a href="#" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p>
+                    <div class="col-sm-2 align-self-center p-5 d-flex">
+                        <?php if($curr_status == 'Pending' || $curr_status == 'Accepted'){echo '<p class="ms-5"><span class="badge bg-success p-2"><a href="#" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p> <p class="ms-5"><span class="badge bg-success p-2"><a href="#" class="bi bi-person-fill text-white text-decoration-none"> Profile</a></span></p>';} ?>
                     </div>
                 </div>
             </section>
@@ -97,16 +127,16 @@ require_once "./partials/header.php";
                                 <div class="row">
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="departure_city">Departure City</label>
-                                        <select class="form-select" id="departure_city" name="departure_city">
+                                        <select class="form-select" id="departure_city" name="departure_city" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
                                             <option selected>Select Departure City</option>
                                             <option  value="Islamabad">Islamabad</option>
-                                            <option  value="Rawalpinidi">Rawalpindi</option>
+                                            <option  value="Rawalpindi">Rawalpindi</option>
                                             <option value="Lahore">Lahore</option>
                                         </select>
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="arrival_city">Arrival City</label>
-                                        <select class="form-select" id="arrival_city" name="arrival_city">
+                                        <select class="form-select" id="arrival_city" name="arrival_city" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
                                             <option selected>Select Arrival City</option>
                                             <option  value="Islamabad">Islamabad</option>
                                             <option  value="Rawalpindi">Rawalpindi</option>
@@ -115,19 +145,19 @@ require_once "./partials/header.php";
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="date">Departure Date</label>
-                                        <input type="date" class="form-control" name="date" id="date">
+                                        <input type="date" class="form-control" name="date" id="date" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="time">Departure Time</label>
-                                        <input type="time" class="form-control" name="time" id="time">
+                                        <input type="time" class="form-control" name="time" id="time" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="fare">Pooling Fare</label>
-                                        <input type="number" class="form-control" name="fare" id="fare" placeholder="Enter Fare">
+                                        <input type="number" class="form-control" name="fare" id="fare" placeholder="Enter Fare" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
                                     </div>
                                 </div>
                                 <div class="text-center ">
-                                    <button name="create_event" type="submit" class="btn btn-outline-success btn-md mt-5">Create Event</button>
+                                    <button name="create_event" type="submit" class="btn btn-outline-success btn-md mt-5" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>Create Event</button>
                                 </div>
                             </div>
                         </form>
@@ -163,27 +193,35 @@ require_once "./partials/header.php";
                                 Pooling Fare
                             </th>
                             <th>
+                                Status
+                            </th>
+                            <th>
                                 Action
                             </th>
                         </thead>
-                        <tbody>
+                        <?php foreach($stmt_events as $event) { ?>
+                        <tbody class="p-3">
+                            
                             <td>
-                                1
+                                <?php echo $count += 1;?>
                             </td>
                             <td>
-                                Rawalpind
+                                <?php echo $event['departure_city']; ?>
                             </td>
                             <td>
-                                Lahore
+                            <?php echo $event['arrival_city']; ?>
                             </td>
                             <td>
-                                2020-08-12
+                            <?php echo $event['date']; ?>
                             </td>
                             <td>
-                                12:00:00
+                            <?php echo $event['time']; ?>
                             </td>
                             <td>
-                                1000 Rs
+                            <?php echo $event['fare']; ?>
+                            </td>
+                            <td>
+                            <?php echo $event['status']; ?>
                             </td>
                             <td>
                                 <div class="d-flex">
@@ -192,9 +230,10 @@ require_once "./partials/header.php";
                                 </div>
                             </td>
                         </tbody>
+                        <?php } ?>
                     </table>
                 </div>
-
+                <?php if(empty($curr_status || $curr_status == 'Pending')){echo '<div class="display-3 text-center mt-5 text-black-50">No Events Yet !</div>';} ?>
             </section>
 
         </div>

@@ -14,14 +14,14 @@
 
 </head>
 
-<body>
+<body class="bg-success">
     <?php
     if (isset($_SESSION['status'])) {
         echo "<h4>" . $_SESSION['status'] . "</h4>";
         unset($_SESSION['status']);
     }
     ?>
-    <nav class="navbar  navbar-expand-lg navbar-light bg-white mt-5">
+    <nav class="navbar  navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand ms-sm-5" href="#">
                 <h2 class="text-success">Intercity Carpooling</h2>
@@ -39,7 +39,7 @@
                 </div>
                 <!-- ModalBtn:End -->
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+                <div class="modal fade" id="exampleModalToggle" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                <div class="modal fade" id="exampleModalToggle2" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -147,113 +147,117 @@
             </div>
         </div>
     </nav>
-
-    <header class="bg-image" style="background-image: url('main.jpg'); height: 80vh;">
+    <header class="bg-success" style="height: 70vh;">
+        <center style="padding-top: 35vh;">
+            <h1 class="text-white display-1">Carpooling</h1>
+        </center>
     </header>
-
-    <div class="container">
-        <div class="row" style="min-height: 10rem;">
-            <div class="col-sm p-5" style="background-color: #19ad34f5;">
-                <h3 class="text-white"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
-                <ul class="text-white  mt-5">
-                    <li>See all Listing Events</li>
-                    <li>All Listing with Full Information</li>
-                </ul>
-            </div>
-            <div class="col-sm p-5" style="background-color: #19ad34dc;">
-                <h3 class="text-white"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
-                <ul class="text-white  mt-5">
-                    <li>See all Listing Events</li>
-                    <li>All Listing with Full Information</li>
-                </ul>
-            </div>
-            <div class="col-sm p-5" style="background-color: #19ad34cc;">
-                <h3 class="text-white"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
-                <ul class="text-white  mt-5">
-                    <li>See all Listing Events</li>
-                    <li>All Listing with Full Information</li>
-                </ul>
+    <div class="bg-white w-100">
+        <div class="container">
+            <div class="row" style="min-height: 10rem;">
+                <div class="col-sm p-5 bg-white">
+                    <h3 class="text-success"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
+                    <ul class="text-success  mt-5">
+                        <li>See all Listing Events</li>
+                        <li>All Listing with Full Information</li>
+                    </ul>
+                </div>
+                <div class="col-sm p-5 bg-white">
+                    <h3 class="text-success"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
+                    <ul class="text-success  mt-5">
+                        <li>See all Listing Events</li>
+                        <li>All Listing with Full Information</li>
+                    </ul>
+                </div>
+                <div class="col-sm p-5 bg-white">
+                    <h3 class="text-success"><i class="bi bi-arrow-right-square-fill"></i> Carpooling Listing</h3>
+                    <ul class="text-success  mt-5">
+                        <li>See all Listing Events</li>
+                        <li>All Listing with Full Information</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-    <main class="container">
-        <section class="mt-5">
-            <form action="" method="post">
-                <div class="mt-4 col-sm-8 m-auto">
-                    <h2 class="text-success mb-5">Search,</h2>
-                    <div class="row">
-                        <div class="p-1 col-sm-4">
-                            <select class="form-select" id="departure_city">
-                                <option selected>Select Departure City</option>
-                                <option value="1">Islamabad</option>
-                                <option value="2">Rawalpind</option>
-                                <option value="3">Lahore</option>
-                            </select>
+    <div class="pad px-2">
+        <main class="container border border-white border-5 rounded-3 mt-5 bg-white px-2">
+            <section class="mt-5">
+                <form action="" method="post">
+                    <div class="mt-4 col-sm-8 m-auto">
+                        <h2 class="mb-5">Search,</h2>
+                        <div class="row">
+                            <div class="p-1 col-sm-4">
+                                <select class="form-select" id="departure_city">
+                                    <option selected>Select Departure City</option>
+                                    <option value="1">Islamabad</option>
+                                    <option value="2">Rawalpind</option>
+                                    <option value="3">Lahore</option>
+                                </select>
+                            </div>
+                            <div class="p-1 col-sm-4">
+                                <select class="form-select" id="arrival_city">
+                                    <option selected>Select Arrival City</option>
+                                    <option value="1">Islamabad</option>
+                                    <option value="2">Rawalpind</option>
+                                    <option value="3">Lahore</option>
+                                </select>
+                            </div>
+                            <div class="p-1 col-sm-4">
+                                <input type="date" class="form-control" name="date" id="date">
+                            </div>
                         </div>
-                        <div class="p-1 col-sm-4">
-                            <select class="form-select" id="arrival_city">
-                                <option selected>Select Arrival City</option>
-                                <option value="1">Islamabad</option>
-                                <option value="2">Rawalpind</option>
-                                <option value="3">Lahore</option>
-                            </select>
-                        </div>
-                        <div class="p-1 col-sm-4">
-                            <input type="date" class="form-control" name="date" id="date">
+                        <div class="text-center ">
+                            <button id="submit" type="button " class="btn btn-outline-success btn-md mt-5 " onclick="">Search Event</button>
                         </div>
                     </div>
-                    <div class="text-center ">
-                        <button id="submit" type="button " class="btn btn-outline-success btn-md mt-5 " onclick="">Search Event</button>
-                    </div>
+                </form>
+            </section>
+            <hr>
+            <section class="mt-5 mb-5">
+                <div class="col-sm-8 m-auto mt-4 table-responsive">
+                    <h2 class=" mb-5">On Going Events</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <th>
+                                Departure City
+                            </th>
+                            <th>
+                                Arrival City
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                            <th>
+                                Ride Fare
+                            </th>
+                            <th>
+                                &nbsp;
+                            </th>
+                        </thead>
+                        <tbody>
+                            <td>
+                                Islamabad
+                            </td>
+                            <td>
+                                Lahore
+                            </td>
+                            <td>
+                                2020-08-12
+                            </td>
+                            <td>
+                                500
+                            </td>
+                            <td>
+                                <!-- ModalBtn -->
+                                <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">More Info</button>
+                                <!-- ModalBtn:End -->
+                            </td>
+                        </tbody>
+                    </table>
                 </div>
-            </form>
-        </section>
-        <hr>
-        <section class="mt-5">
-            <div class="col-sm-8 m-auto mt-4 table-responsive">
-                <h2 class="text-success mb-5">On Going Events</h2>
-                <table class="table table-hover">
-                    <thead>
-                        <th>
-                            Departure City
-                        </th>
-                        <th>
-                            Arrival City
-                        </th>
-                        <th>
-                            Date
-                        </th>
-                        <th>
-                            Ride Fare
-                        </th>
-                        <th>
-                            &nbsp;
-                        </th>
-                    </thead>
-                    <tbody>
-                        <td>
-                            Islamabad
-                        </td>
-                        <td>
-                            Lahore
-                        </td>
-                        <td>
-                            2020-08-12
-                        </td>
-                        <td>
-                            500
-                        </td>
-                        <td>
-                            <!-- ModalBtn -->
-                            <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">More Info</button>
-                            <!-- ModalBtn:End -->
-                        </td>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-    </main>
-
+            </section>
+        </main>
+    </div>
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
