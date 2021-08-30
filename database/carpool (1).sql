@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2021 at 09:13 PM
+-- Generation Time: Aug 30, 2021 at 08:43 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -44,7 +44,8 @@ CREATE TABLE `driver_profile` (
 --
 
 INSERT INTO `driver_profile` (`id`, `driver_id`, `profile_img`, `car_name`, `reg_num`, `car_img`, `car_color`, `car_seats`, `status`) VALUES
-(1, 6, './images/drivers/6picture.jpg', 'Honda City', 'PS-763', './images/drivers/car_images/6car.jpg', 'White', 4, 'Accepted');
+(1, 6, './images/drivers/6picture.jpg', 'Honda City', 'PS-763', './images/drivers/car_images/6car.jpg', 'White', 4, 'Accepted'),
+(2, 9, './images/drivers/9picture.jpg', 'Corolla', 'PS-944', './images/drivers/car_images/9car.jpg', 'Black', 4, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -68,9 +69,9 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `driver_id`, `departure_city`, `arrival_city`, `date`, `time`, `fare`, `status`) VALUES
-(1, 6, 'Islamabad', 'Lahore', '2021-08-26', '12:08:00', 1000, 'Accepted'),
-(2, 6, 'Rawalpinidi', 'Lahore', '2021-08-28', '21:08:00', 800, 'Pending'),
-(3, 6, 'Lahore', 'Rawalpindi', '2021-08-29', '12:08:00', 1000, 'Pending'),
+(1, 6, 'Rawalpindi', 'Rawalpindi', '2021-08-27', '22:30:00', 1100, 'Accepted'),
+(2, 6, 'Rawalpinidi', 'Lahore', '2021-08-28', '21:08:00', 800, 'Accepted'),
+(3, 6, 'Lahore', 'Rawalpindi', '2021-08-29', '12:08:00', 1000, 'Rejected'),
 (4, 6, 'Lahore', 'Islamabad', '2021-08-30', '12:00:00', 1000, 'Pending');
 
 -- --------------------------------------------------------
@@ -93,13 +94,15 @@ CREATE TABLE `sign-up` (
 --
 
 INSERT INTO `sign-up` (`id`, `name`, `email`, `phone_no`, `password`, `role`) VALUES
+(0, 'Admin', 'admin@email.com', '03000000000', '$2y$10$3INz5dFg9s/2sVZ0fKtMUeNBiVR6I9zHeLqRXtKfpDdyxBHhaMIHC', 'Admin'),
 (1, 'User1', 'user1@email.com', '03005345471', '$2y$10$CxwaQ1t2MkYvBZxed0r/QelUydG66Vt3JZ2DrgT4saQPqilQjWLKi', 'User'),
 (2, 'User2', 'user2@email.com', '0335547689', '$2y$10$rHRA63sAZKhgf3gQGGmXMOkFCy8cq/pIyN3XmPcEmWta179HzdSta', 'User'),
 (3, 'User3', 'user3@email.com', '03023458907', '$2y$10$n3LYJnB7zBJUYUHCCXKCHOZTb2tY1TnKY0QM0dphvzdQWnXvi72EO', 'User'),
 (4, 'User4', 'user4@email.com', '03021237890', '$2y$10$ku0rCjO33UOOwwkqX5hV1O7KbPem0bfL4n0KPgsTL/3Vi6Kn35gby', 'User'),
 (5, 'User5', 'user5@email.com', '03235947890', '$2y$10$XOAdrSQ3y5huaazAt7OJWOueMxp3OCH41TqKDm9PJjp9PWXn.oEmq', 'User'),
 (6, 'Driver1', 'driver1@email.com', '03005343215', '$2y$10$gIFe4xgAomc6zaW/tc8evOWaHjCtJFeQwEJhQHlKDxy4Z7.Cy1xeK', 'Driver'),
-(7, 'Driver2', 'driver2@email.com', '03005345471', '$2y$10$biTrkVUa8v13PQCTD2.oZ.YwpbDQELaBxStrj0mZl.YP3THBSMba2', 'Driver');
+(7, 'Driver2', 'driver2@email.com', '03005345471', '$2y$10$biTrkVUa8v13PQCTD2.oZ.YwpbDQELaBxStrj0mZl.YP3THBSMba2', 'Driver'),
+(9, 'Driver3', 'driver3@email.com', '03456789012', '$2y$10$J88YMrDPztUvUaFOtnbt7eRGsA7GSAEGJx0hVsDDcYa/9waYbF.GO', 'Driver');
 
 -- --------------------------------------------------------
 
@@ -157,7 +160,7 @@ ALTER TABLE `user_profile`
 -- AUTO_INCREMENT for table `driver_profile`
 --
 ALTER TABLE `driver_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -169,7 +172,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `sign-up`
 --
 ALTER TABLE `sign-up`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_profile`

@@ -25,10 +25,11 @@ mysqli_close($con);
 ?>
 
 
-<?php require "./partials/header.php"; ?>
+<?php $interface = 'Admin'; require_once "./partials/header.php"; ?>
+
 
 <header class="jumbotron p-5 bg-light text-white mt-5">
-    <h4 class="text-success ms-5 mt-2"> User Interface Main </h4>
+    <h4 class="text-success ms-5 mt-4"> User Interface Main </h4>
 </header>
 
 
