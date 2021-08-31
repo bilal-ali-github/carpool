@@ -52,7 +52,7 @@ require_once "./partials/header.php";
                             <div class="col-6 col-md-4">
                                 <img src="<?php if(empty($img_path)){echo "./images/default.jpg";}else{echo $img_path;} ?>" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
                                 <!-- ModalBtn -->
-                                <?php if(empty($img_path)){ echo '<span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#create-modal"><i class="bi bi-pencil-fill"></i></span>';} ?>
+                                <?php if(empty($img_path) || $curr_status == 'Rejected' ){ echo '<span class="badge bg-success rounded-circle p-1 text-white" role="button" data-bs-toggle="modal" data-bs-target="#create-modal"><i class="bi bi-pencil-fill"></i></span>';} ?>
                                 <!-- ModalBtn:End -->
                                 <!-- Modal -->
                                 <div class="modal fade" id="create-modal" aria-hidden="true" aria-labelledby="ModalToggle" tabindex="-1">
@@ -106,7 +106,7 @@ require_once "./partials/header.php";
                             <div class="col-6 col-md-8 align-self-center">
                                 <h3>Username</h3>
                                 <p>username@email.com | 03355815387</p>
-                                <p class=""><span class="badge bg-white rounded-pill" role="button" <?php if(empty($curr_status)){echo "data-bs-toggle=\"tooltip\" data-bs-placement=\"right\" data-bs-html=\"true\" title=\"Please Submit Profile For Application as Driver \"";} ?>><a class="<?php if(empty($curr_status)){echo 'bi bi-exclamation-circle text-danger ' ;}elseif($curr_status == 'Pending'){echo 'bi bi-arrow-repeat text-warning';}elseif($curr_status == 'Accepted'){echo 'bi bi-check2-circle text-success';} ?> text-decoration-none"> <?php if(empty($curr_status)){ echo 'Complete Profile';}elseif($curr_status == 'Pending'){echo 'In Review';}elseif($curr_status == 'Accepted'){echo 'Verified';}?> </a></span></p>
+                                <p class=""><span class="badge bg-white rounded-pill" role="button" <?php if(empty($curr_status || $curr_status == 'Rejected')){echo "data-bs-toggle=\"tooltip\" data-bs-placement=\"right\" data-bs-html=\"true\" title=\"Please Submit Profile For Application as Driver \"";} ?>><a class="<?php if(empty($curr_status) || $curr_status == 'Rejected'){echo 'bi bi-exclamation-circle text-danger' ;}elseif($curr_status == 'Pending'){echo 'bi bi-arrow-repeat text-warning';}elseif($curr_status == 'Accepted'){echo 'bi bi-check2-circle text-success';} ?> text-decoration-none"> <?php if(empty($curr_status) || $curr_status == 'Rejected'){ echo 'Complete Profile';}elseif($curr_status == 'Pending'){echo 'In Review';}elseif($curr_status == 'Accepted'){echo 'Verified';}?> </a></span></p>
                             </div>
                         </div>
                     </div>
@@ -127,7 +127,7 @@ require_once "./partials/header.php";
                                 <div class="row">
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="departure_city">Departure City</label>
-                                        <select class="form-select" id="departure_city" name="departure_city" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
+                                        <select class="form-select" id="departure_city" name="departure_city" <?php if(empty($curr_status) || $curr_status == 'Pending' || $curr_status == 'Rejected' ){echo 'disabled';} ?>>
                                             <option selected>Select Departure City</option>
                                             <option  value="Islamabad">Islamabad</option>
                                             <option  value="Rawalpindi">Rawalpindi</option>
@@ -136,7 +136,7 @@ require_once "./partials/header.php";
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="arrival_city">Arrival City</label>
-                                        <select class="form-select" id="arrival_city" name="arrival_city" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
+                                        <select class="form-select" id="arrival_city" name="arrival_city" <?php if(empty($curr_status) || $curr_status == 'Pending' || $curr_status == 'Rejected'){echo 'disabled';} ?>>
                                             <option selected>Select Arrival City</option>
                                             <option  value="Islamabad">Islamabad</option>
                                             <option  value="Rawalpindi">Rawalpindi</option>
@@ -145,19 +145,19 @@ require_once "./partials/header.php";
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="date">Departure Date</label>
-                                        <input type="date" class="form-control" name="date" id="date" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
+                                        <input type="date" class="form-control" name="date" id="date" <?php if(empty($curr_status) || $curr_status == 'Pending' || $curr_status == 'Rejected'){echo 'disabled';} ?>>
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="time">Departure Time</label>
-                                        <input type="time" class="form-control" name="time" id="time" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
+                                        <input type="time" class="form-control" name="time" id="time" <?php if(empty($curr_status) || $curr_status == 'Pending' || $curr_status == 'Rejected'){echo 'disabled';} ?>>
                                     </div>
                                     <div class="p-1 col-sm">
                                         <label class="form-label" for="fare">Pooling Fare</label>
-                                        <input type="number" class="form-control" name="fare" id="fare" placeholder="Enter Fare" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>
+                                        <input type="number" class="form-control" name="fare" id="fare" placeholder="Enter Fare" <?php if(empty($curr_status) || $curr_status == 'Pending' || $curr_status == 'Rejected'){echo 'disabled';} ?>>
                                     </div>
                                 </div>
                                 <div class="text-center ">
-                                    <button name="create_event" type="submit" class="btn btn-outline-success btn-md mt-5" <?php if(empty($curr_status) || $curr_status == 'Pending'){echo 'disabled';} ?>>Create Event</button>
+                                    <button name="create_event" type="submit" class="btn btn-outline-success btn-md mt-5" <?php if(empty($curr_status) || $curr_status == 'Pending' || $curr_status == 'Rejected'){echo 'disabled';} ?>>Create Event</button>
                                 </div>
                             </div>
                         </form>
@@ -289,7 +289,7 @@ require_once "./partials/header.php";
                         <?php } ?>
                     </table>
                 </div>
-                <?php if(empty($curr_status || $curr_status == 'Pending')){echo '<div class="display-3 text-center mt-5 text-black-50">No Events Yet !</div>';} ?>
+                <?php if(empty($curr_status || $curr_status == 'Pending' ) || $curr_status == 'Rejected'){echo '<div class="display-3 text-center mt-5 text-black-50">No Events Yet !</div>';} ?>
             </section>
         </div>
     </main>
