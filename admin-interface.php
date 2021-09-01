@@ -33,20 +33,10 @@ $stmt = mysqli_query($con, $sql_table);
             <div class="mt-3 col-md-8 m-auto">
                 <div class="row text-center">
                     <div class="col-6 align-self-center">
-                        <h5>Restrict / Delete Events</h5>
-                    </div>
-                    <div class="col-6">
-                        <button class="btn btn-sm btn-outline-success px-3">Events</button>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-3 col-md-8 m-auto">
-                <div class="row text-center">
-                    <div class="col-6 align-self-center">
                         <h5>Change Passenger and Driver Roles</h5>
                     </div>
                     <div class="col-6 align-self-center">
-                        <button class="btn btn-sm btn-outline-success px-3">Roles</button>
+                        <a href="admin-role.php" class="btn btn-sm btn-outline-success px-3">Roles</a>
                     </div>
                 </div>
             </div>

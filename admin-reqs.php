@@ -28,7 +28,7 @@ require_once "./partials/header.php"; ?>
                 <hr>
                 <div class="table-responsive mt-5">
                     <table class="table table-hover">
-                        <thead>
+                        <thead class="text-center">
                             <th>
                                 Driver ID
                             </th>
@@ -42,11 +42,14 @@ require_once "./partials/header.php"; ?>
                                 Information Status
                             </th>
                             <th>
+                                Vehicle Type
+                            </th>
+                            <th>
                                 Actions
                             </th>
                         </thead>
                         <?php foreach ($stmt as $req) { ?>
-                            <tbody>
+                            <tbody class="text-center">
                                 <td>
                                     <?php echo $req['driver_id']; ?>
                                 </td>
@@ -61,12 +64,20 @@ require_once "./partials/header.php"; ?>
                                 </td>
                                 <td>
                                     <form action="./functions/driver-req.php" method="post">
-                                        <div class="d-flex">
-                                            <input type="hidden" name="driver_id" value="<?php echo $req['driver_id']; ?>">
-                                            <button type="submit" name="details" class="btn btn-sm btn-secondary m-auto">Detail</button>
-                                            <button type="submit" name="accept_req" class="btn btn-sm btn-success m-auto">Accept</button>
-                                            <button type="submit" name="reject_req" class="btn btn-sm btn-danger m-auto">Reject</button>
-                                        </div>
+                                    <select class="form-select" id="vehicle_type" name="vehicle_type">
+                                            <option selected>Select Vehicle Type</option>
+                                            <option  value="Economy">Economy</option>
+                                            <option  value="Business">Business</option>
+                                            <option value="Business Plus">Business Plus</option>
+                                        </select>
+                                </td>
+                                <td>
+                                    <div class="d-flex">
+                                        <input type="hidden" name="driver_id" value="<?php echo $req['driver_id']; ?>">
+                                        <button type="submit" name="details" class="btn btn-sm btn-secondary mx-1">Detail</button>
+                                        <button type="submit" name="accept_req" class="btn btn-sm btn-success mx-1">Accept</button>
+                                        <button type="submit" name="reject_req" class="btn btn-sm btn-danger mx-1">Reject</button>
+                                    </div>
                                     </form>
                                 </td>
                             </tbody>

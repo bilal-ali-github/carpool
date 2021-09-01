@@ -1,49 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carpool System - Admin Change Roles</title>
+session_start();
+if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== true || $_SESSION['admin_role'] != 'Admin') {
+    header("location: index.php");
+}
+require "./database/db_controller.php";
 
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-</head>
+$sql_table = "SELECT id,name,email,role FROM `sign-up`";
+$stmt = mysqli_query($con, $sql_table);
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand ms-sm-5" href="#">Intercity Carpooling</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                </ul>
-                <div class="d-sm-flex me-5">
-                    <a href="" class="btn btn-sm btn-secondary me-2">Logout</a>
-                    </form>
-                </div>
-            </div>
-    </nav>
+?>
 
-    <header class="jumbotron p-5 bg-secondary text-white">
-        <h1>Intercity Carpooling Service</h1>
-    </header>
+<?php $interface = 'Admin';
+require_once "./partials/header.php"; ?>
 
-    <main class="container mt-5">
+<header class="jumbotron p-5 bg-light text-white mt-5">
+    <h4 class="text-success ms-5 mt-2">Admin Interface Main</h4>
+</header>
+
+<div class="pad px-2">
+    <main class="container border border-white border-5 rounded-3 mt-5 bg-white px-2">
         <div class="col-lg-8 m-auto">
-            <div class="row">
-                <div class="col">
-                    <h4>View All :</h4>
-                </div>
-                <div class="col">
-                    <button type="button" class="btn btn-sm btn-secondary">Users</button> &nbsp; or &nbsp;
-                    <button type="button" class="btn btn-sm btn-secondary">Drivers</button>
-                </div>
-            </div>
-            <hr>
-            <div class="table-responsive mt-5">
+            <div class="table-responsive mt-5 mb-5">
                 <h3>Change Roles</h3>
                 <table class="table table-hover">
                     <thead>
@@ -63,31 +41,39 @@
                             Actions
                         </th>
                     </thead>
+                    <?php foreach($stmt as $user) { ?>
                     <tbody>
                         <td>
-                            1
+                            <?php echo $user['id'];?>
                         </td>
                         <td>
-                            Username
+                        <?php echo $user['name'];?>
                         </td>
                         <td>
-                            username@email.com
+                        <?php echo $user['email'];?>
                         </td>
                         <td>
-                            User
+                        <?php echo $user['role'];?>
                         </td>
                         <td>
-                            <div class="d-flex">
-                                <button type="button" class="btn btn-sm btn-secondary">Change Role</button>
-                            </div>
+                            <form action="./functions/change_role.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $user['id'];?>">
+                            <button type="submit" name="change_role" class="btn btn-sm btn-outline-success">Change Role</button>
+                        </form>
                         </td>
                     </tbody>
+                    <?php } ?>
                 </table>
             </div>
         </div>
     </main>
+</div>
+<main class="container mt-5">
+    <div class="col-lg-8 m-auto">
 
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+</main>
+
+<script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>
