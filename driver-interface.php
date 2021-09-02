@@ -29,14 +29,11 @@ if($stmt_profile){
         }
     }
 }
-
-
 mysqli_close($con);
-$interface = 'Admin';
-require_once "./partials/header.php";
-
-
 ?>
+
+<?php $interface = 'Driver';
+require_once "./partials/header.php"; ?>
 
 <header class="jumbotron p-5 bg-light text-white mt-5">
     <h4 class="text-success ms-5 mt-4">Driver Interface Profile</h4>

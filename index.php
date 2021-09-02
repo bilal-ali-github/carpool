@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php  ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,12 +15,6 @@
 </head>
 
 <body class="bg-success">
-    <?php
-    if (isset($_SESSION['status'])) {
-        echo "<h4>" . $_SESSION['status'] . "</h4>";
-        unset($_SESSION['status']);
-    }
-    ?>
     <nav class="navbar  navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
             <a class="navbar-brand ms-sm-5" href="#">
