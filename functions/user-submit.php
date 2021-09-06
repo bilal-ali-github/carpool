@@ -1,7 +1,9 @@
 <?php
 session_start();
-
-require "../database/db_controller.php";
+if (!isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] !== true && $_SESSION['user_role'] != 'User') {
+    header("location: index.php");
+}
+require "./database/db_controller.php";
 
 if (!$_SESSION['user_id']) {
     $user_id_err = "Something Went Wrong";

@@ -9,6 +9,7 @@ $driver_id = null;
 if(isset($_POST['view_driver'])){
     $driver_id = $_POST['driver_id'];
 }
+$user_id = $_SESSION['user_id'];
 $sql = "SELECT `sign-up`.`name`,`sign-up`.`email`,`sign-up`.`phone_no`,`driver_profile`.`profile_img`,`driver_profile`.`car_name`,`driver_profile`.`reg_num`,`driver_profile`.`car_img`,`driver_profile`.`car_color`,`driver_profile`.`car_seats`,`driver_profile`.`status`,`driver_profile`.`vehicle_type` FROM `sign-up` INNER JOIN `driver_profile` ON `sign-up`.`id` = ? AND `driver_profile`.`driver_id` = ?";
 $stmt = mysqli_prepare($con,$sql);
 $driver_name = '';
@@ -47,20 +48,37 @@ if($stmt){
 }
 
 $event_id = $_POST['event_id'];
-$sql_event = "SELECT departure_city,arrival_city,date,time,fare FROM `events` WHERE `id` = $event_id";
+$sql_event = "SELECT id,departure_city,arrival_city,date,time,fare FROM `events` WHERE `id` = $event_id";
 $stmt_event = mysqli_prepare($con,$sql_event);
 if($stmt_event){
     mysqli_stmt_execute($stmt_event);
-    mysqli_stmt_store_result($stmt);
-    if(mysqli_stmt_num_rows($stmt) == 1){
-        mysqli_stmt_bind_result($stmt_event,$departure_city,$arrival_city,$date,$time,$fare);
+    mysqli_stmt_store_result($stmt_event);
+    if(mysqli_stmt_num_rows($stmt_event) == 1){
+        mysqli_stmt_bind_result($stmt_event,$id,$departure_city,$arrival_city,$date,$time,$fare);
         if(mysqli_stmt_fetch($stmt_event)){
+            $event_id = $id;
             $dep_city = $departure_city;
             $arr_city = $arrival_city;
             $dt = $date;
             $tm = $time;
             $fr = $fare;
         }
+    }
+}
+
+$sql_req = "SELECT `status` FROM `event_join` WHERE user_id = $user_id AND driver_id = $driver_id AND event_id = $event_id";
+$stmt_req = mysqli_prepare($con,$sql_req);
+if($stmt_req){
+    mysqli_stmt_execute($stmt_req);
+    mysqli_stmt_store_result($stmt_req);
+    if(mysqli_stmt_num_rows($stmt_req) == 1){
+        mysqli_stmt_bind_result($stmt_req,$status_req);
+        if(mysqli_stmt_fetch($stmt_req)){
+            $curr_status_req = $status_req;
+        }
+    }
+    else{
+        $curr_status_req = '';
     }
 }
 
@@ -152,7 +170,7 @@ require_once "./partials/header.php"; ?>
                 </div>
             </section>
             <section class="mt-5 mb-5">
-                <div class="table-resposive">
+                <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <th>Departure City</th>
@@ -169,8 +187,11 @@ require_once "./partials/header.php"; ?>
                             <td><?php echo $tm; ?></td>
                             <td><?php echo $fr; ?></td>
                             <td>
-                                <form action="">
-                                    <button type="submit" class="btn btn-sm btn-outline-success">Request to Join</button>
+                                <form action="./functions/req-join.php" method="post">
+                                    <input type="hidden" name="event_id" value="<?php echo $event_id?>">
+                                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                                    <input type="hidden" name="driver_id" value="<?php echo $driver_id; ?>">
+                                    <button type="submit" name="req_join" class="btn btn-sm btn-outline-success" <?php if($curr_status_req === 'Requested'){echo "disabled";} ?>>Request to Join</button>
                                 </form>
                             </td>
                         </tbody>
