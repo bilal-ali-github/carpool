@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true || $_SESSION['user_role'] != 'User') {
+if (!isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] !== true && $_SESSION['user_role'] != 'User') {
     header("location: index.php");
 }
 require "./database/db_controller.php";
@@ -20,12 +20,17 @@ if($stmt){
             }
         }
     }
+    mysqli_stmt_close($stmt);
 }
+
+$sql_events = "SELECT * FROM `events` WHERE `status` = 'Accepted'";
+$stmt_events = mysqli_query($con,$sql_events);
+
 mysqli_close($con);
 ?>
 
 
-<?php $interface = 'Admin'; require_once "./partials/header.php"; ?>
+<?php $interface = 'User'; require_once "./partials/header.php"; ?>
 
 
 <header class="jumbotron p-5 bg-light text-white mt-5">
@@ -81,7 +86,7 @@ mysqli_close($con);
                         </div>
                     </div>
                     <div class="col-sm-6 align-self-center">
-                        <p class="ms-5 py-5"><span class="badge bg-success p-2"><a href="#" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p>
+                        <p class="ms-5 py-5"><span class="badge bg-success p-2"><a href="user-responses.php" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p>
                     </div>
                 </div>
             </section>
@@ -131,7 +136,7 @@ mysqli_close($con);
                                 Arrival City
                             </th>
                             <th>
-                                Date
+                                Date | Time
                             </th>
                             <th>
                                 Ride Fare
@@ -140,23 +145,29 @@ mysqli_close($con);
                                 &nbsp;
                             </th>
                         </thead>
+                        <?php foreach($stmt_events as $event) { ?>
                         <tbody>
                             <td>
-                                Islamabad
+                                <?php echo $event['departure_city']; ?>
                             </td>
                             <td>
-                                Lahore
+                                <?php echo $event['arrival_city']; ?>
                             </td>
                             <td>
-                                2020-08-12
+                                <?php echo $event['date']; ?> | <?php echo $event['time']; ?>
                             </td>
                             <td>
-                                500
+                                <?php echo $event['fare']; ?>
                             </td>
                             <td>
-                                <button class="btn btn-sm btn-success">More Info</button>
+                                <form action="./view-driver-profile.php" method="post">
+                                    <input type="hidden" name="event_id" value="<?php echo $event['id']; ?>">
+                                    <input type="hidden" name="driver_id" value="<?php echo $event['driver_id']; ?>">
+                                    <button type="submit" name="view_driver" class="btn btn-sm btn-success">More Info</button>
+                                </form>
                             </td>
                         </tbody>
+                        <?php } ?>
                     </table>
                 </div>
             </section>

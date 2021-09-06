@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin_logged_in']) || $_SESSION['admin_logged_in'] !== tru
 }
 require "./database/db_controller.php";
 
-$sql_table = "SELECT id,name,email,role FROM `sign-up`";
+$sql_table = "SELECT id,name,email,role FROM `sign-up` WHERE `role` = 'User' OR `role`='Driver'";
 $stmt = mysqli_query($con, $sql_table);
 
 ?>

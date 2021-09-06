@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/styles.css">
+    <style>
+        .display{
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="bg-success">
@@ -72,7 +77,7 @@
                             </div>
                         </div>
                         <div class="col">
-                            <form action="" method="" class="form-floating display" id="reply-form">
+                            <form  method="post" class="form-floating display" id="reply-form">
                                 <textarea id="reply" name="reply" class="form-control"></textarea>
                                 <label for="reply" class="form-label">Reply</label>
                                 <div class="mt-3 m-auto">
@@ -89,18 +94,19 @@
 
 
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-        $("#reply-btn").click(function() {
-            if ($("#reply-form").hasClass("display"))
-                $("#reply-form").removeClass("display")
+        const replyform = document.getElementById('reply-form')
+        const replyBtn = document.getElementById('reply-btn')
+        const replysendBtn = document.getElementById('reply-send')
+        const sent = document.getElementById('sent')
+
+        replyBtn.addEventListener('click',function(){
+            replyform.classList.remove('display')
         })
 
-        $("#reply-send").click(function() {
-            $("#reply-form").addClass("display")
-            if ($("#sent").hasClass("display")) {
-                $("#sent").removeClass("display")
-            }
+        replysendBtn.addEventListener('click',function(){
+            replyform.classList.add('display')
+            sent.classList.remove('display')
         })
     </script>
 </body>
