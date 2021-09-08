@@ -144,6 +144,9 @@ mysqli_close($con);
                             <th>
                                 &nbsp;
                             </th>
+                            <th>
+                                &nbsp;
+                            </th>
                         </thead>
                         <?php foreach($stmt_events as $event) { ?>
                         <tbody>
@@ -165,6 +168,9 @@ mysqli_close($con);
                                     <input type="hidden" name="driver_id" value="<?php echo $event['driver_id']; ?>">
                                     <button type="submit" name="view_driver" class="btn btn-sm btn-success">More Info</button>
                                 </form>
+                            </td>
+                            <td>
+                                
                             </td>
                         </tbody>
                         <?php } ?>

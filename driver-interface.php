@@ -108,7 +108,7 @@ require_once "./partials/header.php"; ?>
                         </div>
                     </div>
                     <div class="col-sm-2 align-self-center p-5 d-flex">
-                        <?php if($curr_status == 'Pending' || $curr_status == 'Accepted'){echo '<p class="ms-5"><span class="badge bg-success p-2"><a href="#" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p> <p class="ms-5"><span class="badge bg-success p-2"><a href="driver-profile.php" class="bi bi-person-fill text-white text-decoration-none"> Profile</a></span></p>';} ?>
+                        <?php if($curr_status == 'Pending' || $curr_status == 'Accepted'){echo '<p class="ms-5"><span class="badge bg-success p-2"><a href="driver-response.php" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p> <p class="ms-5"><span class="badge bg-success p-2"><a href="driver-profile.php" class="bi bi-person-fill text-white text-decoration-none"> Profile</a></span></p>';} ?>
                     </div>
                 </div>
             </section>

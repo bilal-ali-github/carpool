@@ -9,6 +9,11 @@
 
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        .display{
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="bg-success">

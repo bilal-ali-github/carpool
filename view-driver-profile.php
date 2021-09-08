@@ -5,7 +5,6 @@ if(!isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] !== true &
     
 }
 require "./database/db_controller.php";
-$driver_id = null;
 if(isset($_POST['view_driver'])){
     $driver_id = $_POST['driver_id'];
 }
@@ -125,11 +124,13 @@ require_once "./partials/header.php"; ?>
                                         <section class="mt-5">
                                             <h5 class="text-center mb-4 text-success">Ask your query from Driver,</h2>
                                             <div class="mb-3 col-sm-6 m-auto">
-                                                <form action="" method="post" enctype="multipart/form-data" class="form-floating">
+                                                <form action="./functions/send-query.php" method="post" class="form-floating">
+                                                    <input type="hidden" name="driver_id" value="<?php echo $driver_id; ?>">
+                                                    <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                                     <textarea id="query" name="query" class="form-control"></textarea>
                                                     <label for="query" class="form-label">Write</label>
                                                     <div class="text-center">
-                                                        <button name="submit-profile" type="submit" class="btn btn-success btn-md mt-5">Submit</button>
+                                                        <button name="send_query" type="submit" class="btn btn-success btn-md mt-5">Submit</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -191,7 +192,7 @@ require_once "./partials/header.php"; ?>
                                     <input type="hidden" name="event_id" value="<?php echo $event_id?>">
                                     <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
                                     <input type="hidden" name="driver_id" value="<?php echo $driver_id; ?>">
-                                    <button type="submit" name="req_join" class="btn btn-sm btn-outline-success" <?php if($curr_status_req === 'Requested'){echo "disabled";} ?>>Request to Join</button>
+                                    <button type="submit" name="req_join" class="btn btn-sm btn-outline-success" <?php if($curr_status_req){if($curr_status_req === 'Requested'){echo "disabled";}} ?>>Request to Join</button>
                                 </form>
                             </td>
                         </tbody>

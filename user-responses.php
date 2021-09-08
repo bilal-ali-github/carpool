@@ -1,3 +1,32 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] !== true && $_SESSION['user_role'] != 'User') {
+    header("location: index.php");
+}
+require "./database/db_controller.php";
+$user_id = $_SESSION['user_id'];
+$img_path = "";
+$sql = "SELECT profile_img FROM `user_profile` WHERE user_id = ?";
+$stmt = mysqli_prepare($con,$sql);
+if($stmt){
+    mysqli_stmt_bind_param($stmt,"i",$param_user_id);
+    $param_user_id = $user_id;
+    if(mysqli_stmt_execute($stmt)){
+        mysqli_stmt_store_result($stmt);
+        if(mysqli_stmt_num_rows($stmt) == 1){
+            mysqli_stmt_bind_result($stmt,$profile_img);
+            if(mysqli_stmt_fetch($stmt)){
+                $img_path = $profile_img;
+            }
+        }
+    }
+    mysqli_stmt_close($stmt);
+}
+$sql_response = "SELECT `sign-up`.`name`,`responses`.`from`,`responses`.`message` FROM `sign-up` INNER JOIN `responses` ON `responses`.`to` = $user_id AND `sign-up`.`id` = `responses`.`from`";
+$stmt_response = mysqli_query($con,$sql_response);
+mysqli_close($con);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,7 +76,7 @@
                         <div class="col-sm-6">
                             <div class="row">
                                 <div class="col-6 col-md-4">
-                                    <img src="picture.jpg" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
+                                    <img src="<?php if(empty($img_path)){echo "./images/default.jpg";}else{echo $img_path;} ?>" class="img-fluid rounded-circle border border-5 border-success" alt="Profile Image">
                                 </div>
                                 <div class="col-6 col-md-8 align-self-center">
                                     <h3>Username</h3>
@@ -61,11 +90,11 @@
                 </section>
                 <section class="mt-5 mb-5">
                     <h2>Responses</h2>
+                    <?php foreach($stmt_response as $response) { ?>
                     <div class="row mt-5">
                         <div class="col-12">
-                            <h5>From : Driver Name</h5>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit velit dolorum odio, eius ullam facilis optio, iure delectus tenetur soluta provident rem incidunt, sit vitae quae? Sunt, placeat beatae dignissimos modi officiis
-                                et eaque architecto, officia libero aperiam adipisci enim.</p>
+                            <h5>From : <?php echo $response['name']; ?></h5>
+                            <p><?php echo $response['message']; ?></p>
                             <div class="row">
                                 <div class="col-6 text-black-50">
                                     <p>Date: | Time: </p>
@@ -77,16 +106,18 @@
                             </div>
                         </div>
                         <div class="col">
-                            <form  method="post" class="form-floating display" id="reply-form">
-                                <textarea id="reply" name="reply" class="form-control"></textarea>
+                            <form action="./functions/send-query.php"  method="post" class="form-floating display" id="reply-form">
+                                <input type="hidden" name="driver_id" value="<?php echo $response['from'] ?>">
+                                <textarea id="reply" name="query"   class="form-control"></textarea>
                                 <label for="reply" class="form-label">Reply</label>
                                 <div class="mt-3 m-auto">
-                                    <button type="submit" class="btn btn-sm btn-success" id="reply-send">Send</button>
+                                    <button type="submit" name="send_query" class="btn btn-sm btn-success" id="reply-send">Send</button>
                                 </div>
                             </form>
                             <p class="text-success display" id="sent"><i class="bi bi-check"></i> Sent !</p>
                         </div>
                     </div>
+                    <?php } ?>
                 </section>
             </div>
         </main>
