@@ -90,7 +90,7 @@ mysqli_close($con);
                 </section>
                 <section class="mt-5 mb-5">
                     <h2>Responses</h2>
-                    <?php foreach($stmt_response as $response) { ?>
+                    <?php if($stmt_response){ foreach($stmt_response as $response) { ?>
                     <div class="row mt-5">
                         <div class="col-12">
                             <h5>From : <?php echo $response['name']; ?></h5>
@@ -117,6 +117,8 @@ mysqli_close($con);
                             <p class="text-success display" id="sent"><i class="bi bi-check"></i> Sent !</p>
                         </div>
                     </div>
+                    <?php }}else { ?>
+                        <div class="display-3 text-black-50 mt-5 text-center"> ...No Responses Yet</div>
                     <?php } ?>
                 </section>
             </div>

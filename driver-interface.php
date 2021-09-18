@@ -107,8 +107,17 @@ require_once "./partials/header.php"; ?>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2 align-self-center p-5 d-flex">
-                        <?php if($curr_status == 'Pending' || $curr_status == 'Accepted'){echo '<p class="ms-5"><span class="badge bg-success p-2"><a href="driver-response.php" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p> <p class="ms-5"><span class="badge bg-success p-2"><a href="driver-profile.php" class="bi bi-person-fill text-white text-decoration-none"> Profile</a></span></p>';} ?>
+                    <div class="col-sm-6 align-self-center">
+                        <?php if($curr_status == 'Pending' || $curr_status == 'Accepted'){echo '<div class="row py-2">
+                        <div class="col d-grid gap-2">
+                            <button class="btn btn-success"><a href="" class="bi bi-arrow-repeat text-white text-decoration-none"> Event Running</a></button>
+                            <button class="btn btn-success"><a href="driver-profile.php" class="bi bi-person-fill text-white text-decoration-none"> Profile</a></button>
+                        </div>
+                        <div class="col d-grid gap-2">
+                            <button class="btn btn-success"><a href="driver-event-req.php" class="bi bi-person-plus-fill text-white text-decoration-none">  Event Requests</a></button>
+                            <button class="btn btn-success"><a href="driver-response.php" class="bi bi-question-circle-fill text-white text-decoration-none"> Queries</a></button>
+                        </div>
+                        </div>';} ?>
                     </div>
                 </div>
             </section>
@@ -205,8 +214,8 @@ require_once "./partials/header.php"; ?>
                                         <input type="number" class="form-control" name="update_fare" id="update_fare" placeholder="Enter Fare">
                                     </div>
                                 </div>
-                                <div class="text-center ">
-                                    <button name="update_event" type="submit" class="btn btn-outline-success btn-md mt-5">Create Event</button>
+                                <div class="text-center">
+                                    <button name="update_event" type="submit" class="btn btn-outline-success btn-sm mt-5">Update Event</button>
                                 </div>
                             </div>
                         </form>

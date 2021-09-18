@@ -29,8 +29,10 @@ if($stmt_profile){
         }
     }
 }
-$sql_response = "SELECT `sign-up`.`name`,`responses`.`id`,`responses`.`from`,`responses`.`message` FROM `sign-up` INNER JOIN `responses` ON `responses`.`to` = $driver_id AND `sign-up`.`id` = `responses`.`from`";
-$stmt_response = mysqli_query($con,$sql_response);
+
+$sql_requests = "SELECT * FROM `event_join` WHERE `driver_id` = $driver_id AND `status` = 'Requested'";
+$stmt_requests = mysqli_query($con,$sql_requests);
+
 mysqli_close($con);
 ?>
 
@@ -62,67 +64,45 @@ require_once "./partials/header.php"; ?>
                     </div>
                 </div>
             </section>
-            <hr>
             <section class="mt-5 mb-5">
-                    <h2>Responses</h2>
-                    <?php if($stmt_response){ foreach($stmt_response as $query) { ?>
-                    <div class="row mt-5">
-                        <div class="col-12">
-                            <h5>From : <?php echo $query['name'] ?> </h5>
-                            <p><?php echo $query['message']; ?></p>
-                            <div class="row">
-                                <div class="col-6 text-black-50">
-                                    <p>Date: | Time: </p>
-                                </div>
-                                <div class="col-6">
-                                    <div class="d-flex">
-                                    <form action="./functions/delete-response.php" method="post">
-                                        <input type="hidden" name="id" value="<?php echo $query['id']; ?>">
-                                        <button name="delete" type="submit" class="btn btn-sm btn-outline-danger me-5">Delete</button>
-                                    </form>
-                                    <button class="btn btn-sm btn-outline-success " id="reply-btn">Reply</button>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <th>
+                                Event ID
+                            </th>
+                            <th>
+                                User ID
+                            </th>
+                            <th>
+                                Request to Join
+                            </th>
+                        </thead>
+                        <?php foreach($stmt_requests as $reqs) { ?>
+                        <tbody>
+                            <td>
+                                <?php echo $reqs['event_id']; ?>
+                            </td>
+                            <td>
+                                <?php echo $reqs['user_id']; ?>
+                            </td>
+                            <td>
+                                <form>
+                                    <div class="d-flex m-auto">
+                                        <button type="submit" name="accept_req" class="btn btn-success btn-sm">Accept</button>
+                                        <button type="submit" name="accept_req" class="btn btn-success btn-sm">Accept</button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <form action="./functions/send-response.php"  method="post" class="form-floating display" id="reply-form">
-                                <input type="hidden" name="reply_to" value="<?php echo $query['from']; ?>">
-                                <textarea id="reply" name="reply" class="form-control"></textarea>
-                                <label for="reply" class="form-label">Reply</label>
-                                <div class="mt-3 m-auto">
-                                    <button type="submit" name="send_response" class="btn btn-sm btn-success" id="reply-send">Send</button>
-                                </div>
-                            </form>
-                            <p class="text-success display" id="sent"><i class="bi bi-check"></i> Sent !</p>
-                        </div>
-                    </div>
-                    <?php }}else { ?>
-                        <div class="display-3 text-black-50 mt-5 text-center"> ...No Responses Yet</div>
-                    <?php } ?>
-                </section>
+                                </form>
+                            </td>
+                        </tbody>
+                        <?php } ?>
+                    </table>
+                </div>
+            </section>
         </div>
     </main>
 </div>
 
-
 <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script>
-        const replyform = document.getElementById('reply-form')
-        const replyBtn = document.getElementById('reply-btn')
-        const replysendBtn = document.getElementById('reply-send')
-        const sent = document.getElementById('sent')
-
-        replyBtn.addEventListener('click',function(){
-            replyform.classList.remove('display')
-        })
-
-        replysendBtn.addEventListener('click',function(){
-            replyform.classList.add('display')
-            sent.classList.remove('display')
-        })
-    </script>
-
 </body>
-
-</html>
+</httml>

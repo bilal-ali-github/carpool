@@ -86,7 +86,14 @@ mysqli_close($con);
                         </div>
                     </div>
                     <div class="col-sm-6 align-self-center">
-                        <p class="ms-5 py-5"><span class="badge bg-success p-2"><a href="user-responses.php" class="bi bi-envelope-open-fill text-white text-decoration-none"> Responses</a></span></p>
+                    <div class="row py-5">
+                        <div class="col d-grid gap-2">
+                            <button class="btn btn-success"><a href="" class="bi bi-arrow-repeat text-white text-decoration-none"> Event Running</a></button>
+                        </div>
+                        <div class="col d-grid gap-2">
+                            <button class="btn btn-success"><a href="user-response.php" class="bi bi-question-circle-fill text-white text-decoration-none"> Queries</a></button>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </section>

@@ -15,8 +15,10 @@ if(isset($_POST['send_query'])){
     var_dump($message);
     $sql = "INSERT INTO `responses`(`from`,`to`,`message`) VALUES($user_id,$driver_id,'$message')";
     $stmt = mysqli_query($con,$sql);
-    var_dump($stmt);
     if($stmt){
-        header("location: ../user-responses.php");
+        header("location: ../user-interface.php");
+    }
+    else{
+        echo "Something Went Wrong";
     }
 }
